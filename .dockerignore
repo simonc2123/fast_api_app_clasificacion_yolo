@@ -1,0 +1,14 @@
+.git
+.claude
+__pycache__
+*.pyc
+*.pyo
+.mypy_cache
+.venv
+uv.lock
+*.md
+k8s/
+frontend/
+Dockerfile*
+requirements-frontend.txt
+Makefile
