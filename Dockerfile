@@ -8,9 +8,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
+# Instalar uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Instalar PyTorch CPU-only antes que ultralytics para evitar la versión CUDA
+RUN uv pip install --system torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
 # Copiar e instalar dependencias Python
 COPY requirements-backend.txt .
-RUN pip install --no-cache-dir -r requirements-backend.txt
+RUN uv pip install --system -r requirements-backend.txt
 
 # Copiar el código del backend
 COPY app/ ./app/
