@@ -12,3 +12,4 @@ frontend/
 Dockerfile*
 requirements-frontend.txt
 Makefile
+*.pt

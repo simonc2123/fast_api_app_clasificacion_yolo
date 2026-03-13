@@ -15,9 +15,8 @@ RUN pip install --no-cache-dir -r requirements-backend.txt
 # Copiar el código del backend
 COPY app/ ./app/
 
-# Copiar el modelo YOLO si existe localmente (opcional)
-# Si no existe, ultralytics intentará descargarlo al iniciar
-COPY yolo26n.pt* ./
+# Descargar el modelo YOLO durante el build para no hacerlo en cada arranque
+RUN python -c "from ultralytics import YOLO; YOLO('yolo26n.pt')"
 
 EXPOSE 8000
 
