@@ -8,6 +8,8 @@ __pycache__
 uv.lock
 *.md
 k8s/
+app/
 Dockerfile*
+requirements-backend.txt
 Makefile
 *.pt
