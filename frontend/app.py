@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 from PIL import Image, ImageDraw, ImageFont
@@ -9,7 +10,7 @@ st.set_page_config(page_title="Detección de Objetos con YOLO26n mas fastApi", l
 st.title("Detección de Objetos con YOLO26n y FastAPI")
 st.write("Sube una imagen para detectar objetos utilizando el modelo YOLO26n")
 
-API_URL = "http://localhost:8000/api/v1/detect"
+API_URL = os.environ.get("API_URL", "http://localhost:8000/api/v1/detect")
 uploaded_file = st.file_uploader(
     "Selecciona una imagen (JPG, JPEG, PNG)", type=["jpg", "jpeg", "png"])
 

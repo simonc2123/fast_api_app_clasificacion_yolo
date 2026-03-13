@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yolo-frontend
+  labels:
+    app: yolo-frontend
+spec:
+  selector:
+    app: yolo-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501
+  # LoadBalancer: expone el frontend con una IP pública en Azure
+  type: LoadBalancer

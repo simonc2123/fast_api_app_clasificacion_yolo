@@ -1,0 +1,18 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Instalar dependencias Python
+COPY requirements-frontend.txt .
+RUN pip install --no-cache-dir -r requirements-frontend.txt
+
+# Copiar el frontend
+COPY frontend/ ./frontend/
+
+EXPOSE 8501
+
+# API_URL se configura via variable de entorno en el manifiesto K8s
+# Por defecto apunta al servicio interno de K8s
+ENV API_URL=http://yolo-backend:8000/api/v1/detect
+
+CMD ["streamlit", "run", "frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
