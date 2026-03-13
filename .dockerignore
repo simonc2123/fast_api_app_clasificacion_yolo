@@ -1,0 +1,13 @@
+.git
+.claude
+__pycache__
+*.pyc
+*.pyo
+.mypy_cache
+.venv
+uv.lock
+*.md
+k8s/
+Dockerfile*
+Makefile
+*.pt
