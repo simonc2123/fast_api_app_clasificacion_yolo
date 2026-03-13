@@ -8,8 +8,6 @@ __pycache__
 uv.lock
 *.md
 k8s/
-frontend/
 Dockerfile*
-requirements-frontend.txt
 Makefile
 *.pt
